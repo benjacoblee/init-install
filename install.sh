@@ -4,8 +4,9 @@ log_file="./${USER}-${HOSTNAME}-installation.log"
 touch "$log_file"
 
 lecho() {
-    echo "$(date): $USER: $@" >>"$log_file"
-    echo "$@"
+    current_date=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "$current_date: $USER: $*" >>"$log_file"
+    echo "$*"
 }
 
 lecho "Updating & upgrading packages..."
@@ -21,7 +22,7 @@ fi
 # remember to install oh-my-zsh separately
 
 lecho "Installing nvm..."
-if curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sudo -E bash -s; then
+if sudo wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | sudo -E bash -s; then
     # run nvm install <NODE-VERSION> after restarting terminal
     lecho "Done."
 else

@@ -12,11 +12,18 @@ lecho() {
 lecho "Updating & upgrading packages..."
 sudo apt update -y && sudo apt upgrade -y
 
-lecho "Installing git & zsh..."
-if sudo apt install -y git && sudo apt install -y zsh; then
+lecho "Installing git..."
+if sudo apt install -y git; then
     lecho "Done."
 else
-    lecho "git & zsh installation failed."
+    lecho "git installation failed."
+fi
+
+lecho "Installing fish..."
+if sudo apt-add-repository ppa:fish-shell/release-3 -y && sudo apt update -y && sudo apt install fish; then
+    lecho "Done."
+else
+    lecho "fish installation failed."
 fi
 
 # remember to install oh-my-zsh separately

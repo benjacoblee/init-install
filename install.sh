@@ -26,15 +26,23 @@ else
     lecho "fish installation failed."
 fi
 
-# remember to install oh-my-zsh separately
-
-lecho "Installing nvm..."
-if sudo wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | sudo -E bash -s; then
-    # run nvm install <NODE-VERSION> after restarting terminal
-    lecho "Done."
-else
-    lecho "nvm installation failed."
+if ! type "make" >/dev/null; then
+    lecho "Installing make..."
+    if sudo apt install make; then
+        lecho "Done."
+    else
+        lecho "make installation failed".
+    fi
 fi
+
+lecho "Installing cargo..."
+if curl https://sh.rustup.rs -sSf | sudo -E bash -s; then
+    lecho "Done"
+else
+    lecho "cargo installation failed."
+fi
+
+# install fisher, nvm.fish
 
 lecho "Installing Tailscale..."
 if sudo curl -fsSL https://tailscale.com/install.sh | sudo -E bash -s; then

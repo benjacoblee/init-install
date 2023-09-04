@@ -97,6 +97,14 @@ if sudo apt install -y zoxide; then
 else 
     lecho "Zoxide installation failed."
 fi
+
+lecho "Installing helix..."
+if sudo add-apt-repository ppa:maveonair/helix-editor -y && sudo apt update -y && sudo apt install -y helix; then
+    lecho "Done."
+else
+    lecho "Helix installation failed."
+end 
+
 # Depends on npm
 # lecho "Installing tldr..."
 # if npm i -g tldr; then

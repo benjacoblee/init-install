@@ -91,6 +91,12 @@ else
     lecho "fd installation failed."
 fi
 
+lecho "Installing zoxide..."
+if sudo apt install -y zoxide; then
+    lecho "Done."
+else 
+    lecho "Zoxide installation failed."
+fi
 # Depends on npm
 # lecho "Installing tldr..."
 # if npm i -g tldr; then

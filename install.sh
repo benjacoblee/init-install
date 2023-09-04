@@ -91,7 +91,7 @@ else
     lecho "fd installation failed."
 fi
 
-lecho "Installing zoxide..."
+lecho "Installing zoxide..." # `add zoxide init fish | source` to ~/.config/fish/config.fish
 if sudo apt install -y zoxide; then
     lecho "Done."
 else 

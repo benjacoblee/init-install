@@ -19,30 +19,12 @@ else
     lecho "git installation failed."
 fi
 
-lecho "Installing fish..."
-if sudo apt-add-repository ppa:fish-shell/release-3 -y && sudo apt update -y && sudo apt install fish; then
+lecho "Installing zsh..."
+if sudo apt install -y zsh; then
     lecho "Done."
 else
-    lecho "fish installation failed."
+    lecho "zsh installation failed."
 fi
-
-if ! type "make" >/dev/null; then
-    lecho "Installing make..."
-    if sudo apt install make; then
-        lecho "Done."
-    else
-        lecho "make installation failed".
-    fi
-fi
-
-lecho "Installing cargo..."
-if curl https://sh.rustup.rs -sSf | sudo -E bash -s; then
-    lecho "Done"
-else
-    lecho "cargo installation failed."
-fi
-
-# install fisher, nvm.fish
 
 lecho "Installing Tailscale..."
 if sudo curl -fsSL https://tailscale.com/install.sh | sudo -E bash -s; then
@@ -95,7 +77,7 @@ fi
 lecho "Installing zoxide..." # `add zoxide init fish | source` to ~/.config/fish/config.fish
 if sudo apt install -y zoxide; then
     lecho "Done."
-else 
+else
     lecho "Zoxide installation failed."
 fi
 
@@ -104,7 +86,7 @@ if sudo add-apt-repository ppa:maveonair/helix-editor -y && sudo apt update -y &
     lecho "Done."
 else
     lecho "Helix installation failed."
-end 
+fi
 
 # Depends on npm
 # lecho "Installing tldr..."
